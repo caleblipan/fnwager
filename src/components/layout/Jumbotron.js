@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /* Import images */
 import pickaxe from './images/pickaxe.png';
@@ -20,7 +21,7 @@ function Jumbotron()
     	</div>
     	<div className="col-6">
 			<h1>Practice like a pro.<br/>Play like a pro.</h1>
-    		<button className="btn btn-yellow">Play Now</button>
+    		<button className="btn btn-yellow"><Link to='/playnow' style={{ color: 'inherit' }}>Play Now</Link></button>
     	</div>
 		<div className="col-3">
     		<div className="col-12">

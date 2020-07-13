@@ -332,12 +332,13 @@ img {
   color: #fff;
 }
 
-.btn-light,
-.bg-light,
-.badge-light,
-.alert-light {
-  background: var(--light-color);
-  color: #333;
+.btn-dashed {
+	border: 2px solid var(--yellow-color);
+	border-radius: 0;
+	border-style: dashed;
+  	background: transparent;
+	color: white;
+	box-shadow: 0 0 0;
 }
 
 .btn-dark,
@@ -562,7 +563,7 @@ table th {
 .jumbotron {
 	text-align: center;
 	height: 100vh;
-	background: url(images/home/Background.png);
+	background: url(background-images/home/Background.png);
 	background-position: center;
 	background-size: cover;
 }
@@ -578,12 +579,82 @@ table th {
 	padding: 22% 22% 0 22%;
 }
 
+#play-now {
+	height: 100%;
+	padding: 128px 0;
+	background: url(background-images/playnow/PlayNow-jumbotron.png);
+	background-position: center;
+	background-size: cover;
+}
+
+#play-now h1 {
+	font-size: 64px;
+}
+
+#open-games {
+	height: 100%;
+	padding: 0;
+	background: url(background-images/opengames/open-games.png);
+	background-position: center;
+	background-size: cover;
+}
+
+#open-games h1 {
+	font-size: 39px;
+}
+
+
 #pickaxe {
 	transform: translate(48px, 92px);
 }
 
 #blue-bottle {
 	transform: translate(-128px, 0);
+}
+
+.choice-wrapper > .col-6 {
+	padding: 32px;
+}
+
+@media screen and (max-width: 576px) {
+	.choice-wrapper > .col-6 {
+		padding: 0 0 64px 0;
+	}
+}
+
+#left-background {
+	height: 400px;
+	color: white;
+	border: 2px solid #19c429;
+	border-radius: 10px;
+	font-size: 23px;
+	align-items: flex-end;
+	background: url(background-images/playnow/background-left.png);
+	background-position: center;
+	background-size: cover;
+}
+
+#left-background .btn {
+	background: #19c429;
+	box-shadow: 0 0 20px #19c429;
+	border: 0;
+	border-radius: 0;
+}
+
+#right-background {
+	height: 400px;
+	color: white;
+	border: 2px solid grey;
+	border-radius: 10px;
+	font-size: 23px;
+	align-items: flex-end;
+	background: url(background-images/playnow/background-right.png);
+	background-position: center;
+	background-size: cover;
+}
+
+#right-background img {
+	width: 190px;
 }
 
 @media screen and (max-width: 900px) {
@@ -599,7 +670,7 @@ table th {
 
 /* Info Section */
 .info-section {
-	background: url(images/home/info-section.png);
+	background: url(background-images/home/info-section.png);
 	background-position: center;
 	background-size: cover;
 	position: relative;
@@ -622,6 +693,10 @@ table th {
 .text-info > .col-12 {
 	padding-left: 0;
 	padding-right: 0;
+}
+
+.text-info.play-now {
+	height: auto;
 }
 
 .col-12 > .col-4 {
