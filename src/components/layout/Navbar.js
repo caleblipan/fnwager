@@ -26,8 +26,10 @@ class Navbar extends Component
     	let buttonClass = this.state.open ? "openSidenav" : "closeSidenav";
     	let classNames = "sidenav " + buttonClass;
         
+    	const { navbarClassNames } = this.props;
+    
     	return (
-		<nav className="navbar">
+		<nav className={ navbarClassNames }>
     		<ul>
     			<li className="navbar-logo">
     				<img src={logo}/>

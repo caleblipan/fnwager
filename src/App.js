@@ -13,6 +13,7 @@ import Contact from './components/pages/Contact';
 import OpenGames from './components/pages/OpenGames';
 
 class App extends Component {
+
   	constructor(props) {
     	super(props)
     	this.state = {
@@ -20,21 +21,32 @@ class App extends Component {
     	}
   	}
 
-  	liftStateUp = data =>{
-    	this.setState({ transparent: data})
+  	liftStateUp = data => {
+    	this.setState({ transparent: data })
   	}
     
 	render() {
+    	const { lobbies } = this.state;
+    
+    	let navbarBackgroundColor = this.state.transparent ? "transparent" : "black";
+    	let navbarClassNames = "navbar " + navbarBackgroundColor;
+    
   		return (
         <Router>
     		<Fragment>
-        		<Navbar />
+        		<Navbar navbarClassNames={navbarClassNames}/>
         		<Switch>
-        			<Route exact path='/' component={Home} />
-        			<Route exact path='/playnow' component={PlayNow} />
-        			<Route exact path='/contact' component={Contact} />
+        			<Route exact path='/'>
+                    	<Home liftStateUp={this.liftStateUp} />
+                    </Route>
+        			<Route path='/playnow'>
+                    	<PlayNow liftStateUp={this.liftStateUp} />
+                    </Route>
+        			<Route path='/contact'>
+                    	<Contact liftStateUp={this.liftStateUp} />
+                    </Route>
         			<Route path='/opengames'>
-                    	<OpenGames liftStateUp={this.liftStateUp} />
+                    	<OpenGames liftStateUp={this.liftStateUp} lobbies={lobbies}/>
                     </Route>
         		</Switch>
 				<Footer />

@@ -11,7 +11,7 @@
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --yellow-color: #ff8a00;
-  --success-color: #28a745;
+  --green-color: #378f0d;
 }
 
 * {
@@ -188,9 +188,60 @@ img {
 
 /* Cards */
 .card {
-  padding: 1rem;
-  border: #ccc 1px dotted;
-  margin: 0.7rem 0;
+	font-family: burbank;
+	background-image: url(background-images/opengames/card-background.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	height: auto;
+  	padding: 1rem;
+  	border: 0;
+	outline: none;
+  	margin: 0.7rem 0;
+}
+
+.card h3 {
+	font-family: burbank;
+	font-size: 24px;
+}
+
+.card .btn {
+	border: 0;
+	border-radius: 0;
+	box-shadow: 0 0 0;
+	font-size: 20px;
+	padding: 8px;
+	width: 100%;
+}
+
+.card p:not(.lobbyName) {
+	font-size: 14px;
+}
+
+.lobbyName {
+	font-family: burbank;
+	font-size: 36px!important;
+	color: var(--yellow-color);
+}
+
+.data {
+	font-family: Montserrat;
+	color: var(--green-color);
+}
+
+.data-id {
+	font-family: Montserrat;
+	color: var(--yellow-color);
+}
+
+.winner-box {
+	background: url(./background-images/opengames/winner-box.png);
+	background-position: center;
+	background-size: cover;
+}
+
+#btn-yellow, #btn-grey {
+	width: 100%;
+	
 }
 
 /* List */
@@ -428,13 +479,22 @@ table th {
 
 /* Navbar */
 .navbar {
-	position: absolute;
   	display: flex;
   	justify-content: space-between;
   	align-items: center;
   	padding: 24px;
   	z-index: 1;
  	width: 100%;
+}
+
+.navbar.transparent {
+	background: transparent;
+	position: absolute;
+}
+
+.navbar.black {
+	background: var(--primary-color);
+	position: static;
 }
 
 .navbar img {
@@ -593,7 +653,6 @@ table th {
 
 #open-games {
 	height: 100%;
-	padding: 0;
 	background: url(background-images/opengames/open-games.png);
 	background-position: center;
 	background-size: cover;
@@ -601,6 +660,21 @@ table th {
 
 #open-games h1 {
 	font-size: 39px;
+}
+
+#open-games-main h2 {
+	font-size: 39px;
+}
+
+#open-games-main {
+	top: 0;
+	padding: 32px 64px;
+	margin-bottom: 192px;
+	background: var(--primary-color);
+}
+
+.lobbies {
+	padding: 0;
 }
 
 
