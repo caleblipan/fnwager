@@ -14,7 +14,7 @@ function Info()
 	<div className="info-section col-12 row"> 
     	<div className="container">
     		<div className="wrapper center-col-12">
-    			<div className="col-6">
+    			<div className="col-6 image-div">
     				<img src={character1} />
     			</div>
 				<div className="center-col-6">
@@ -32,19 +32,19 @@ function Info()
 						<hr />
                     	<p>Follow us on all our socials and never missout on new updates and changes!</p>    
                         <div className="col-12">
-                        	<div className="col-4">
+                        	<div className="col-4 stay-still">
                         		<img src={discord} />
 							</div>
-                        	<div className="col-4">
+                        	<div className="col-4 stay-still">
                         		<img src={youtube} />
 							</div>
-                        	<div className="col-4">
+                        	<div className="col-4 stay-still">
                         		<img src={twitter} />
 							</div>
                         </div>
                    	</div>
 				</div>
-    			<div className="col-6">
+    			<div className="col-6 image-div">
     				<img src={character2} />
     			</div>
 			</div>
