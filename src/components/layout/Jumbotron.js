@@ -13,10 +13,10 @@ function Jumbotron()
 	<div className="jumbotron center-col-12 row"> 
     	<div className="col-3">
     		<div className="col-12">
-    			<img src={pickaxe} id="pickaxe"/>
+    			<img src={pickaxe} id="pickaxe" alt="Fortnite Pickaxe"/>
 			</div>
 			<div className="col-12">
-				<img src={grenade} />
+				<img src={grenade} alt="Fortnite Grenade"/>
             </div>
     	</div>
     	<div className="col-6">
@@ -25,10 +25,10 @@ function Jumbotron()
     	</div>
 		<div className="col-3">
     		<div className="col-12">
-    			<img src={bottle} />
+    			<img src={bottle} alt="Fortnite Bottle"/>
 			</div>
 			<div className="col-12">
-				<img src={blueBottle} id="blue-bottle" />
+				<img src={blueBottle} id="blue-bottle" alt="Fortnite Blue Bottle" />
             </div>
         </div>
     </div>

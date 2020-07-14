@@ -11,7 +11,7 @@ function Footer()
     	<div className="container">
     		<div className="col-12">
     			<div className="col-3 logo">
-    				<img src={logo} />
+    				<img src={logo} alt="The FNWager Logo"/>
     			</div>
     		</div>
 			<div className="col-12">

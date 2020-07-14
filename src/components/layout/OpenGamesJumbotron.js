@@ -1,7 +1,6 @@
 import React from 'react';
 
 /* Import images */
-import Lock from '../layout/images/Lock.png';
 
 function PlayNowJumbotron()
 {

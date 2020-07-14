@@ -668,9 +668,13 @@ table th {
 
 #open-games-main {
 	top: 0;
-	padding: 32px 64px;
+	background: url(./background-images/opengames/info-section.png);
+	padding: 32px 0 0 0;
 	margin-bottom: 192px;
-	background: var(--primary-color);
+}
+
+.container-padding {
+	padding: 0 64px;
 }
 
 .lobbies {
@@ -787,6 +791,23 @@ table th {
 
 .info-section .col-6 {
 	padding-bottom: 0;
+}
+
+.yellow-strip {
+	background: url(./background-images/opengames/yellow-strip.png);
+	background-position: center;
+	background-size: cover;
+	
+	padding: 0;
+
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+.yellow-strip img {
+	width: 89px;
+	height: 54px;
 }
 
 #yellow-strip {

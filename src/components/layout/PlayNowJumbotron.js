@@ -26,7 +26,7 @@ function PlayNowJumbotron()
     			<div className="col-6">
     				<div className="center-col-12" id="right-background">
     					<div className="col-12">
-    						<img src={Lock} />
+    						<img src={Lock} alt="Lock icon"/>
     						<h2>100 Player Lobby</h2>
     						<br/>
     						<br/>

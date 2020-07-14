@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Layout Components
 import Jumbotron from '../layout/Jumbotron';

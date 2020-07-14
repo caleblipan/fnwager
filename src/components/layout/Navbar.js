@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 /* Import logo image */
@@ -32,7 +31,7 @@ class Navbar extends Component
 		<nav className={ navbarClassNames }>
     		<ul>
     			<li className="navbar-logo">
-    				<img src={logo}/>
+    				<img src={logo} alt="The FNWager Logo"/>
     			</li>
     			<li>
     				<Link to='/'>Home</Link>
@@ -54,7 +53,7 @@ class Navbar extends Component
         	</ul>
        		<div id="hamburger-menu">
             	<i className="fa fa-bars" onClick={this.openState}></i>
-           		<div id="sidenav" className="sidenav" className={classNames}>
+           		<div id="sidenav" className={classNames}>
                 	<Link to="#" className="closebtn" id="close-button" onClick={this.closeState}>&times;</Link>
                 	<Link to="/">Home</Link>
                 	<Link to="/playnow">Play Now</Link>

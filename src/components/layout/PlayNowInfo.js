@@ -23,20 +23,20 @@ function PlayNowInfo()
 						</div>
                         <div className="col-12">
                         	<div className="col-4 stay-still">
-                        		<img src={discord} />
+                        		<img src={discord} alt="Discord button"/>
 							</div>
                         	<div className="col-4 stay-still">
-                        		<img src={youtube} />
+                        		<img src={youtube} alt="Youtube button"/>
 							</div>
                         	<div className="col-4 stay-still">
-                        		<img src={twitter} />
+                        		<img src={twitter} alt="Twitter button"/>
 							</div>
                         </div>
                    	</div>
 				</div>
 			</div>
     	</div>
-		<img src={strip} id="yellow-strip" style={{ top: '0' }} />
+		<img src={strip} id="yellow-strip" style={{ top: '0' }} alt="Yellow strip"/>
     </div>
     );
 }

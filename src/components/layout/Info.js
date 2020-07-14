@@ -15,7 +15,7 @@ function Info()
     	<div className="container">
     		<div className="wrapper center-col-12">
     			<div className="col-6 image-div">
-    				<img src={character1} />
+    				<img src={character1} alt="Fortnite character 1"/>
     			</div>
 				<div className="center-col-6">
     				<div className="col-12 text-info">
@@ -33,23 +33,23 @@ function Info()
                     	<p>Follow us on all our socials and never missout on new updates and changes!</p>    
                         <div className="col-12">
                         	<div className="col-4 stay-still">
-                        		<img src={discord} />
+                        		<img src={discord} alt="Discord button"/>
 							</div>
                         	<div className="col-4 stay-still">
-                        		<img src={youtube} />
+                        		<img src={youtube} alt="Youtube button"/>
 							</div>
                         	<div className="col-4 stay-still">
-                        		<img src={twitter} />
+                        		<img src={twitter} alt="Twitter button"/>
 							</div>
                         </div>
                    	</div>
 				</div>
     			<div className="col-6 image-div">
-    				<img src={character2} />
+    				<img src={character2} alt="Fortnite character 2"/>
     			</div>
 			</div>
     	</div>
-		<img src={strip} id="yellow-strip" />
+		<img src={strip} id="yellow-strip" alt="Yellow strip"/>
     </div>
     );
 }

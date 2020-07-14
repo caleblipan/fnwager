@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 function LobbyItem({lobby: { 
     	lobbyName,
@@ -29,7 +28,7 @@ function LobbyItem({lobby: {
             	<p className="data">{winner}</p>
             </div>
             <p>Schedule on {schedule}</p>
-			<div style={{ padding: 0, display: 'inline-flex', width: '100%', padding: '16px 0' }}>
+			<div style={{ display: 'inline-flex', width: '100%', padding: '16px 0' }}>
             <button className="btn btn-yellow" id="btn-yellow">View</button>
             <button className="btn btn-grey" id="btn-grey">Create Team</button>
 			</div>
