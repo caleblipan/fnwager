@@ -11,24 +11,54 @@ import Home from './components/pages/Home';
 import PlayNow from './components/pages/PlayNow';
 import Contact from './components/pages/Contact';
 import OpenGames from './components/pages/OpenGames';
+import Lobby from './components/pages/Lobby';
 import ChangeEmail from './components/pages/ChangeEmail';
 
 class App extends Component {
 
   	constructor(props) {
-    	super(props)
-    	this.state = {
-      		transparent: true,
-    	}
+    	super(props);
+		this.state = {
+    		lobbies: [
+        		{
+                	lobbyName: "029357",
+        			id: "329490dfsaSFJ23048",
+                	status: "NEW",
+                	arena: "Duo",
+                	usersJoined: "2",
+                	entryFee: "$25",
+                	prizePool: "1st (22)",
+                	winner: 'N/A',
+                	schedule: 'May 2, 2021, 6:19.44 AM'
+        		},
+        		{
+                	lobbyName: "029359",
+        			id: "329490dfsaSFJ23049",
+                	status: "NEW",
+                	arena: "Duo",
+                	usersJoined: "2",
+                	entryFee: "$25",
+                	prizePool: "1st (22)",
+                	winner: 'N/A',
+                	schedule: 'May 2, 2021, 6:20.44 AM'
+        		}
+        	],
+        	lobby: []
+        }
   	}
+
+    getSpecificLobby = async (id) => {
+    	/* Put axios.get (or fetch API) here... */
+    	
+    	const res = this.state.lobbies[0]; 
+    	this.setState({lobby: res});
+    }
 
   	liftStateUp = data => {
     	this.setState({ transparent: data })
   	}
     
 	render() {
-    	const { lobbies } = this.state;
-    
     	let navbarBackgroundColor = this.state.transparent ? "transparent" : "black";
     	let navbarClassNames = "navbar " + navbarBackgroundColor;
     
@@ -47,8 +77,11 @@ class App extends Component {
                     	<Contact liftStateUp={this.liftStateUp} />
                     </Route>
         			<Route path='/opengames'>
-                    	<OpenGames liftStateUp={this.liftStateUp} lobbies={lobbies}/>
+                    	<OpenGames liftStateUp={this.liftStateUp} lobbies={this.state.lobbies}/>
                     </Route>
+                    <Route exact path="/lobby/:id" render={props => (
+						<Lobby { ...props } liftStateUp={this.liftStateUp} getSpecificLobby={this.getSpecificLobby} lobby={this.state.lobby}/>
+					)}/>
         			<Route path='/changeemail'>
                     	<ChangeEmail liftStateUp={this.liftStateUp} />
                     </Route>

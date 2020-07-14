@@ -12,6 +12,7 @@
   --light-color: #f4f4f4;
   --yellow-color: #ff8a00;
   --green-color: #378f0d;
+  --red-color: #c31414;
 }
 
 * {
@@ -67,6 +68,7 @@ img {
 
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
+.col-fifth {width: 20%; padding-top: 0}
 .col-3 {width: 25%;}
 .col-4 {width: 33.33%;}
 .col-5 {width: 41.66%;}
@@ -109,7 +111,12 @@ img {
 }
 
 .center-col-6 { width: 50% }
+.center-col-fifth {width: 20%;}
 .center-col-12 { width: 100% }
+
+.center-col-fifth > .col-12 {
+	height: auto;
+}
 
 @media screen and (max-width: 900px) {
 	[class*="center-col-"] {
@@ -215,6 +222,54 @@ img {
 
 .card p:not(.lobbyName) {
 	font-size: 14px;
+}
+
+.card-team, .card-normal {
+	background-image: url(background-images/gamelobby/card-team-background.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	flex: 1;
+	height: 100%;
+}
+
+.card-team hr {
+	margin: 16px 0;
+	border: 1px solid grey;
+}
+
+.card-green {
+	background: #0c0b09;
+	border-radius: 10px;
+	border: 2px solid var(--green-color);
+	box-shadow: 0 0 20px var(--green-color);
+}
+
+.card-dead {
+	background-image: url(background-images/gamelobby/dead-team-background.png);
+	opacity: 0.7;
+}
+
+.check-icon {
+	width: 29px;
+}
+
+.checklist {
+	color: var(--green-color);
+}
+
+.crossIcon {
+	color: var(--red-color);
+}
+
+#lobby-card {
+	background-image: url(background-images/gamelobby/game-lobby-background.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+#schedule {
+	font-size: 12px;
+	line-height: 1.6;
 }
 
 .lobbyName {
@@ -406,6 +461,12 @@ img {
 .alert-yellow {
   background: var(--yellow-color);
   color: #fff;
+}
+
+.btn-red {
+	border-radius: 5px!important;
+	background: var(--red-color);
+	color: #fff;
 }
 
 .btn-success,
@@ -674,7 +735,7 @@ table th {
 }
 
 .container-padding {
-	padding: 0 64px;
+	padding: 0 56px;
 }
 
 .lobbies {
@@ -861,6 +922,10 @@ table th {
 
 .submit-btn-wrapper {
 	padding: 0;
+}
+
+.button-wrapper {
+	margin: 8px 48px;
 }
 
 #change-email-box {

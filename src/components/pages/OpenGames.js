@@ -6,25 +6,10 @@ import OpenGamesJumbotron from '../layout/OpenGamesJumbotron';
 import OpenGamesMain from '../layout/OpenGamesMain';
 
 class OpenGames extends Component {
-  	constructor(props) {
-    	super(props);
-		this.state = {
-    		lobbies: [
-        		{
-                	lobbyName: "029357",
-        			id: "329490dfsaSFJ23048",
-                	status: "NEW",
-                	arena: "Duo",
-                	usersJoined: "2",
-                	entryFee: "$25",
-                	prizePool: "1st (22)",
-                	winner: 'N/A',
-                	schedule: 'May 2, 2021, 6:19.44 AM'
-        		}
-        	]
-        }
+	constructor(props) {
+		super(props);
     	this.setTransparency = this.setTransparency.bind(this);
-  	}
+    }
 
  	componentDidMount() {
     	window.addEventListener('load', this.setTransparency);
@@ -40,7 +25,7 @@ class OpenGames extends Component {
   	}
 
 	render() {
-    	const lobbies = this.state.lobbies;
+    	const lobbies = this.props.lobbies;
 		OpenGames.propTypes = {
 			lobbies: PropTypes.array.isRequired
 		}

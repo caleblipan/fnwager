@@ -28,7 +28,7 @@ function Info()
     		<div className="center-col-12">
 				<div className="center-col-6">
     				<div className="col-12 text-info">
-						<h2>Get Connected With VNWagers</h2>
+						<h2>Get Connected With FNWagers</h2>
 						<hr />
                     	<p>Follow us on all our socials and never missout on new updates and changes!</p>    
                         <div className="col-12">
