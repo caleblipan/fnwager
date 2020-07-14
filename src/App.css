@@ -797,8 +797,9 @@ table th {
 	background: url(./background-images/opengames/yellow-strip.png);
 	background-position: center;
 	background-size: cover;
+	background-repeat: no-repeat;
 	
-	padding: 0;
+	padding: 0!important;
 
 	display: flex;
 	align-items: flex-end;
@@ -806,14 +807,70 @@ table th {
 }
 
 .yellow-strip img {
-	width: 89px;
-	height: 54px;
+	width: 70px;
+}
+
+@media screen and (max-width: 1280px) {
+	.yellow-strip {
+    	height: 60px;
+	}
 }
 
 #yellow-strip {
 	position: relative;
 	top: -84px;
 	z-index: -2;
+}
+
+.form-box {
+	background-image: url(./background-images/changeemail/change-email-box.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+
+	padding: 36px 24px 18px 24px;
+}
+
+.form-box label {
+	font-family: burbank;
+	font-size: 20px;
+	color: var(--yellow-color);
+}
+
+.form-box input {
+	background: url(./background-images/changeemail/input-box-background.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	padding: 16px;
+	margin-top: 4px;
+	margin-bottom: 20px;
+	border: 0;
+	outline: none;
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+	color: white;
+}
+
+.form-box .btn {
+	border-radius: 5px;
+	box-shadow: 0 0 0;
+	background: var(--yellow-color);
+	font-family: burbank;
+	font-size: 26px;
+	padding: 4px 56px;
+}
+
+.submit-btn-wrapper {
+	padding: 0;
+}
+
+#change-email-box {
+	padding: 128px 30% 256px 30%;
+}
+
+@media screen and (max-width: 576px) {
+	#change-email-box {
+    	padding: 64px 5%;
+	}
 }
 
 @media screen and (max-width: 900px) {

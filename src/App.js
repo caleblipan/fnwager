@@ -11,6 +11,7 @@ import Home from './components/pages/Home';
 import PlayNow from './components/pages/PlayNow';
 import Contact from './components/pages/Contact';
 import OpenGames from './components/pages/OpenGames';
+import ChangeEmail from './components/pages/ChangeEmail';
 
 class App extends Component {
 
@@ -47,6 +48,9 @@ class App extends Component {
                     </Route>
         			<Route path='/opengames'>
                     	<OpenGames liftStateUp={this.liftStateUp} lobbies={lobbies}/>
+                    </Route>
+        			<Route path='/changeemail'>
+                    	<ChangeEmail liftStateUp={this.liftStateUp} />
                     </Route>
         		</Switch>
 				<Footer />
