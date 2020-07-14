@@ -13,6 +13,7 @@ import Contact from './components/pages/Contact';
 import OpenGames from './components/pages/OpenGames';
 import Lobby from './components/pages/Lobby';
 import ChangeEmail from './components/pages/ChangeEmail';
+import Login from "./components/pages/Login";
 
 class App extends Component {
 
@@ -49,19 +50,19 @@ class App extends Component {
 
     getSpecificLobby = async (id) => {
     	/* Put axios.get (or fetch API) here... */
-    	
-    	const res = this.state.lobbies[0]; 
+
+    	const res = this.state.lobbies[0];
     	this.setState({lobby: res});
     }
 
   	liftStateUp = data => {
     	this.setState({ transparent: data })
   	}
-    
+
 	render() {
     	let navbarBackgroundColor = this.state.transparent ? "transparent" : "black";
     	let navbarClassNames = "navbar " + navbarBackgroundColor;
-    
+
   		return (
         <Router>
     		<Fragment>
@@ -85,10 +86,13 @@ class App extends Component {
         			<Route path='/changeemail'>
                     	<ChangeEmail liftStateUp={this.liftStateUp} />
                     </Route>
+					<Route path='/login'>
+						<Login liftStateUp={this.liftStateUp} />
+					</Route>
         		</Switch>
 				<Footer />
     		</Fragment>
-        </Router>	
+        </Router>
   		);
 	}
 }
