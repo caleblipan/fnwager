@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link, BrowserRouter, Redirect} from 'react-router-dom';
 import './App.css';
+import axios from 'axios'
+
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
@@ -14,6 +16,7 @@ import OpenGames from './components/pages/OpenGames';
 import Lobby from './components/pages/Lobby';
 import ChangeEmail from './components/pages/ChangeEmail';
 import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
 
 class App extends Component {
 
@@ -44,11 +47,13 @@ class App extends Component {
                 	schedule: 'May 2, 2021, 6:20.44 AM'
         		}
         	],
-        	lobby: []
+        	lobby: [],
+			user: false
         }
   	}
 
-    getSpecificLobby = async (id) => {
+
+	getSpecificLobby = async (id) => {
     	/* Put axios.get (or fetch API) here... */
 
     	const res = this.state.lobbies[0];
@@ -59,6 +64,16 @@ class App extends Component {
     	this.setState({ transparent: data })
   	}
 
+  	getUser = async () => {
+		await axios.post('/currentuser').then(r => {
+			this.setState({user: r.data})
+		})
+	}
+
+	componentDidMount() {
+		this.getUser()
+	}
+
 	render() {
     	let navbarBackgroundColor = this.state.transparent ? "transparent" : "black";
     	let navbarClassNames = "navbar " + navbarBackgroundColor;
@@ -66,7 +81,7 @@ class App extends Component {
   		return (
         <Router>
     		<Fragment>
-        		<Navbar navbarClassNames={navbarClassNames}/>
+        		<Navbar navbarClassNames={navbarClassNames} user={this.state.user}/>
         		<Switch>
         			<Route exact path='/'>
                     	<Home liftStateUp={this.liftStateUp} />
@@ -87,7 +102,13 @@ class App extends Component {
                     	<ChangeEmail liftStateUp={this.liftStateUp} />
                     </Route>
 					<Route path='/login'>
-						<Login liftStateUp={this.liftStateUp} />
+						<Login liftStateUp={this.liftStateUp}  />
+					</Route>
+					<Route path='/register'>
+						<Register liftStateUp={this.liftStateUp} />
+					</Route>
+					<Route path='/logout' onEnter={async () =>{await axios.post('/logout')}}>
+						<Redirect to="/" />
 					</Route>
         		</Switch>
 				<Footer />
