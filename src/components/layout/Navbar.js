@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 /* Import logo image */
 import logo from './images/Logo.png';
+import axios from "axios";
 
 class Navbar extends Component {
     constructor() {
@@ -42,6 +43,11 @@ class Navbar extends Component {
                     <li>
                         <Link to='/contact'>Contact Us</Link>
                     </li>
+                    {user !== false && user.roles.includes('Admin') ?
+                        <li>
+                            <Link to='/create_game'>Create Game</Link>
+                        </li> : <div></div>
+                    }
                 </ul>
                 <ul>
                     <li>
@@ -52,7 +58,7 @@ class Navbar extends Component {
                     <li>
                         {user === false ?
                             <Link to='/register'>Register</Link> :
-                            <Link to='/logout'>Log out</Link>}
+                            <Link to='/logout' onClick={async () =>{await axios.post('/logout').then(r => window.location.reload(false))}}>Log out</Link>}
                     </li>
                 </ul>
                 <div id="hamburger-menu">
@@ -62,6 +68,9 @@ class Navbar extends Component {
                         <Link to="/">Home</Link>
                         <Link to="/playnow">Play Now</Link>
                         <Link to="/contact">Contact</Link>
+                        {user !== false && user.roles.includes('Admin') ?
+                                <Link to='/create_game'>Create Game</Link>: <div></div>
+                        }
                         <br/>
                         {user === false ?
                             <div>
@@ -69,7 +78,7 @@ class Navbar extends Component {
                                 <Link to='/register'>Register</Link></div> :
                             <div>
                                 <Link to={'/' + user.GamerTag}>{user.GamerTag}</Link>
-                                <Link to='/logout'>Log out</Link>
+                                <Link to='/logout' onClick={async () =>{await axios.post('/logout').then(r => window.location.reload(false))}}>Log out</Link>
                             </div>
                         }
                     </div>

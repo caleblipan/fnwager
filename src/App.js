@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import {BrowserRouter as Router, Switch, Route, Link, BrowserRouter, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import './App.css';
 import axios from 'axios'
 
@@ -17,6 +17,7 @@ import Lobby from './components/pages/Lobby';
 import ChangeEmail from './components/pages/ChangeEmail';
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
+import CreateGame from "./components/pages/CreateGame";
 
 class App extends Component {
 
@@ -69,9 +70,29 @@ class App extends Component {
 			this.setState({user: r.data})
 		})
 	}
+	getGames = async () => {
+  		await axios.post('/GetGames').then(r =>{
+  			let lobbies = []
+			r.data.map(game => lobbies.push({
+				lobbyName: game.lobbyName,
+				id: game._id,
+				status: game.status,
+				arena: game.arena,
+				usersJoined: game.participants.length,
+				entryFee: "$"+game.entryFee,
+				prizePool: game.prizePool[0],
+				winner: 'N/A',
+				schedule: game.start
+			}))
+			this.setState({lobbies:lobbies})
+
+		})
+
+	}
 
 	componentDidMount() {
 		this.getUser()
+		this.getGames()
 	}
 
 	render() {
@@ -92,6 +113,12 @@ class App extends Component {
         			<Route path='/contact'>
                     	<Contact liftStateUp={this.liftStateUp} />
                     </Route>
+					<Route path='/create_game'>
+						{this.state.user !== false && this.state.user.roles.includes('Admin') ?
+							<CreateGame liftStateUp={this.liftStateUp}/>:
+							<Redirect to="/403" />
+						}
+					</Route>
         			<Route path='/opengames'>
                     	<OpenGames liftStateUp={this.liftStateUp} lobbies={this.state.lobbies}/>
                     </Route>
@@ -107,7 +134,7 @@ class App extends Component {
 					<Route path='/register'>
 						<Register liftStateUp={this.liftStateUp} />
 					</Route>
-					<Route path='/logout' onEnter={async () =>{await axios.post('/logout')}}>
+					<Route path='/logout'>
 						<Redirect to="/" />
 					</Route>
         		</Switch>

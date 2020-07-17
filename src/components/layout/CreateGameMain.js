@@ -6,22 +6,24 @@ import Youtube from './images/small-youtube-logo.png';
 import Twitter from './images/small-twitter-logo.png';
 import axios from "axios";
 
-function LoginMain() {
+function CreateGameMain() {
 
-    const [inputs, setInputs] = useState({remember: false});
+    const [inputs, setInputs] = useState({Remember: false});
 
     const handleInputChange = (event) => {
         event.persist();
         setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+        console.log(event.target)
     }
 
     const handleSubmit = async(event) => {
         event.preventDefault()
-        await axios.post('/LoginForm', inputs).then(r => {
+        await axios.post('/create_game', inputs).then(r => {
             if(r.data.status === 'success'){
                 window.location.replace('/');
             }
             else {console.log(r.data)}
+
         })
     }
 
@@ -31,14 +33,21 @@ function LoginMain() {
                 <div className="center-col-12" id="change-email-box">
                     <div className="col-12 form-box">
                         <form onSubmit={handleSubmit}>
-                            <label>Email or Gamertag</label>
-                            <input name='tag' type="text" onChange={handleInputChange}/>
-                            <label>Password</label>
-                            <input name='password' type="password" onChange={handleInputChange}/>
-                            <input name='remember' type="checkbox" onChange={handleInputChange}/>
-                            <label> Remember me</label>
+                            <label>Lobby name</label>
+                            <input name='lobbyName' type="text" onChange={handleInputChange}/>
+                            <label>Arena</label>
+                            <select type='select' name='arena' onChange={handleInputChange}>
+                                <option disabled selected value> -- select an option -- </option>
+                                <option value="solo">Solo</option>
+                            </select>
+                            <label>Entry Fee</label>
+                            <input name='entryFee' type="text" onChange={handleInputChange}/>
+                            <label>Prize Pool</label>
+                            <input name='prizePool' type="text" onChange={handleInputChange}/>
+                            <label>Schedule</label>
+                            <input name='schedule' type="text" onChange={handleInputChange}/>
                             <div className="center-col-12 submit-btn-wrapper">
-                                <input type="submit" value="Login" className="btn btn-yellow"/>
+                                <input type="submit" value="Submit" className="btn btn-yellow"/>
                             </div>
                         </form>
                     </div>
@@ -55,4 +64,4 @@ function LoginMain() {
     );
 }
 
-export default LoginMain;
+export default CreateGameMain;

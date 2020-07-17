@@ -6,7 +6,7 @@ import Discord from './images/small-discord-logo.png';
 import Youtube from './images/small-youtube-logo.png';
 import Twitter from './images/small-twitter-logo.png';
 
-function RegisterMain() {
+function GeneralFormMain({inputs}) {
 
     const [inputs, setInputs] = useState({Remember: false});
 
@@ -15,18 +15,13 @@ function RegisterMain() {
         setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
     }
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
         if (inputs.Password === inputs.PasswordAgain) {
             await axios.post('/register', inputs).then(r => {
-                if(r.data.status === 'success'){
-                    window.location.replace('/');
-                }
-                else {console.log(r.data)}
-
+                console.log(r.data)
             })
-        }
-        else {
+        } else {
             console.log({status: 'failure', reason: 'invalid_password'})
         }
     }
@@ -38,16 +33,10 @@ function RegisterMain() {
                 <div className="center-col-12" id="change-email-box">
                     <div className="col-12 form-box">
                         <form onSubmit={handleSubmit}>
-                            <label>Gamertag</label>
-                            <input name='Gamertag' type="text" onChange={handleInputChange}/>
-                            <label>Email</label>
-                            <input name='Email' type="email" onChange={handleInputChange}/>
-                            <label>Password</label>
-                            <input name='Password' type="password" onChange={handleInputChange}/>
-                            <label>Confirm Password</label>
-                            <input name='PasswordAgain' type="password" onChange={handleInputChange}/>
-                            <input name='Remember' type="checkbox" onChange={handleInputChange}/>
-                            <label> Remember me</label>
+                            {inputs.map(input => <div>
+                                <label>{input[0]}</label>
+                                <input name={input[0]} type={input[1]} onChange={handleInputChange}/>
+                            </div>)}
                             <div className="center-col-12 submit-btn-wrapper">
                                 <input type="submit" value="Register" className="btn btn-yellow"/>
                             </div>
@@ -55,9 +44,9 @@ function RegisterMain() {
                     </div>
                 </div>
                 <div className="col-12 yellow-strip">
-                    <img src={Discord} alt="Small Discord button" />
-                    <img src={Youtube} alt="Small Youtube button" />
-                    <img src={Twitter} alt="Small Twitter button" />
+                    <img src={Discord} alt="Small Discord button"/>
+                    <img src={Youtube} alt="Small Youtube button"/>
+                    <img src={Twitter} alt="Small Twitter button"/>
                 </div>
             </div>
             <div className="divider">
@@ -66,4 +55,4 @@ function RegisterMain() {
     );
 }
 
-export default RegisterMain;
+export default GeneralFormMain;
