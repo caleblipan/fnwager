@@ -18,6 +18,7 @@ import ChangeEmail from './components/pages/ChangeEmail';
 import Login from "./components/pages/Login";
 import Register from "./components/pages/Register";
 import CreateGame from "./components/pages/CreateGame";
+import NewTeam from "./components/pages/NewTeam";
 
 class App extends Component {
 
@@ -124,6 +125,9 @@ class App extends Component {
                     </Route>
                     <Route exact path="/lobby/:id" render={props => (
 						<Lobby { ...props } liftStateUp={this.liftStateUp} getSpecificLobby={this.getSpecificLobby} lobby={this.state.lobby}/>
+					)}/>
+					<Route exact path="/createteam/:id" render={props => (
+						<NewTeam { ...props } liftStateUp={this.liftStateUp} getSpecificLobby={this.getSpecificLobby} lobby={this.state.lobby}/>
 					)}/>
         			<Route path='/changeemail'>
                     	<ChangeEmail liftStateUp={this.liftStateUp} />

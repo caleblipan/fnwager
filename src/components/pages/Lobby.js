@@ -1,4 +1,6 @@
 import React, { Fragment, Component } from 'react';
+import axios from 'axios'
+
 
 // Layout Components
 import LobbyJumbotron from '../layout/LobbyJumbotron';
@@ -37,22 +39,30 @@ class Lobby extends Component {
     	this.setTransparency = this.setTransparency.bind(this);
   	}
 
+  	getTeams = async () => {
+		await axios.post('/get_teams', {'id': this.props.match.params.id}).then(r =>
+		this.setState({teams: r.data}))
+
+	}
+
  	componentDidMount() {
+		console.log(this.props.match.params.id)
     	this.props.getSpecificLobby(this.props.match.params.id);
-    
+    	this.getTeams()
+
     	window.addEventListener('load', this.setTransparency);
-        var evt = document.createEvent('Event');  
-        evt.initEvent('load', false, false);  
+        var evt = document.createEvent('Event');
+        evt.initEvent('load', false, false);
         window.dispatchEvent(evt);
  	}
 
   	setTransparency() {
-		let booleanValue = false;	
+		let booleanValue = false;
     	this.setState({ transparent: booleanValue });
     	this.props.liftStateUp(booleanValue);
   	}
 
-	render() {    	
+	render() {
     	const {
     	lobbyName,
     	id,
@@ -61,11 +71,11 @@ class Lobby extends Component {
     	usersJoined,
     	entryFee,
     	prizePool,
-    	schedule 
+    	schedule
         } = this.props.lobby;
-    
+
     	const teams = this.state.teams;
-    
+
   		return (
     		<Fragment>
         		<LobbyJumbotron />
@@ -79,7 +89,7 @@ class Lobby extends Component {
         					<div className="col-fifth">
         						<div className={classNames}>
         							<div className="text-center">
-        							{( team.verified ) ? ( 
+        							{( team.verified ) ? (
                                         	( team.winner ) ? (
         										<h2><img src={Badge} className="check-icon" alt="Badge icon"/> Team #1</h2>
                                         	) : (
@@ -102,7 +112,7 @@ class Lobby extends Component {
         								<p><span className="crossIcon">&#10008;</span> Refunded</p>
         							</div>
         						</div>
-        					</div>	
+        					</div>
     						)
     					})}
     					</div>
@@ -123,9 +133,9 @@ class Lobby extends Component {
 									<br/>
                                    	<p id="schedule">*Game will start when schedule, or at the time set if a minimum number of people joined. If we do not have enough people the game will be refunded</p>
     								<div className="button-wrapper">
-										<input type="submit" value="Leave Tournament" className="btn btn-red"/>	
+										<input type="submit" value="Leave Tournament" className="btn btn-red"/>
                                     </div>
-								</div>  
+								</div>
 								<img src={Legend} alt="Legend" />
     						</div>
     					</div>

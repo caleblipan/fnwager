@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {  Link } from "react-router-dom";
 
-function LobbyItem({lobby: { 
+function LobbyItem({lobby: {
     	lobbyName,
     	id,
     	status,
@@ -12,7 +12,7 @@ function LobbyItem({lobby: {
     	prizePool,
     	winner,
     	schedule }}) {
-    
+
 	return (
     	<Fragment>
         <div className="card text-center">
@@ -33,7 +33,7 @@ function LobbyItem({lobby: {
             <p>Schedule on {schedule}</p>
 			<div style={{ display: 'inline-flex', width: '100%', padding: '16px 0' }}>
             <button className="btn btn-yellow" id="btn-yellow"><Link to={`lobby/${id}`} style={{ color: 'inherit' }}>View</Link></button>
-            <button className="btn btn-grey" id="btn-grey">Create Team</button>
+            <button className="btn btn-grey" id="btn-grey"><Link to={`createteam/${id}`} style={{ color: 'inherit' }}>Create Team</Link></button>
 			</div>
 		</div>
 		</Fragment>
